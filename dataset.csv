@@ -1,0 +1,11 @@
+order_amount,product_category,payment_method,return_reason,past_returns,delivery_delay_days,refund_type,is_fraud
+1200,Clothing,UPI,Wrong Size,1,0,Post,0
+3500,Electronics,Card,Item Damaged,0,2,Instant,0
+999,Clothing,UPI,Not Delivered,4,0,Instant,1
+4500,Electronics,Card,Used then returned,5,0,Instant,1
+700,Footwear,COD,Wrong Product,2,3,Instant,0
+2000,Clothing,UPI,No reason,4,0,Instant,1
+1500,Cosmetics,COD,Claimed damaged,3,1,Instant,1
+900,Books,UPI,Wrong Item,0,0,Post,0
+5200,Electronics,Card,Not Delivered,6,0,Instant,1
+1100,Clothing,UPI,Used then returned,3,0,Instant,1
