@@ -4,24 +4,31 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Home route (to avoid NOT FOUND confusion)
 @app.route("/")
 def home():
     return "Fraud API is running. Use POST request on /predict."
 
-# Load trained model
+# load trained model
 model = pickle.load(open("fraud_model.pkl", "rb"))
 
-# Prediction route
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
         data = request.json
 
-        # Convert to dataframe
-        df = pd.DataFrame([data])
+        # enforce correct column order
+        columns = [
+            "order_amount",
+            "product_category",
+            "payment_method",
+            "return_reason",
+            "past_returns",
+            "delivery_delay_days",
+            "refund_type"
+        ]
 
-        # Predict probability
+        df = pd.DataFrame([[data.get(col) for col in columns]], columns=columns)
+
         prob = model.predict_proba(df)[0][1]
         label = int(prob > 0.5)
 
